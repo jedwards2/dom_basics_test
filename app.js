@@ -17,6 +17,7 @@ function buildHeader() {
   let homeButton = document.createElement("button");
   homeButton.textContent = "Home";
   homeButton.type = "button";
+  homeButton.setAttribute("id", "homeButton");
   homeButton.onclick = returnHome;
   homeButton.onClick = header.appendChild(homeButton);
 }
@@ -37,8 +38,10 @@ function createTable(json) {
   const main = document.getElementById("main");
   main.textContent = "";
   const table = document.createElement("div");
+  table.classList.add("table");
   for (let i = 0; i < json.length; i++) {
     let element = createNewTableElement(json[i]);
+
     table.appendChild(element);
   }
   main.append(table);
@@ -57,6 +60,7 @@ function createPosts(json) {
 
 function createNewTableElement(obj) {
   let row = document.createElement("div");
+  row.classList.add("row");
   const name = document.createTextNode(obj.name);
   row.addEventListener("click", function () {
     getPosts(obj.id);
@@ -67,6 +71,7 @@ function createNewTableElement(obj) {
 
 function createNewPostElement(obj) {
   let row = document.createElement("div");
+  row.classList.add("text_row");
   const name = document.createTextNode(obj.title);
   row.appendChild(name);
   return row;
